@@ -1,0 +1,31 @@
+/*
+Exercise 3. Using functions.
+4. Create an HTML document laba-1-3.html.
+5. Create a function that returns the word "day" in the correct form depending on the number n passed in.
+
+Example:
+		There are 14 days left until the end of your studies.
+		There are 3 days left until the end of your studies.
+		There is 1 day left until the end of your studies.
+
+*/
+
+
+function getWord( number )
+{
+		if( number == 14 )
+  	{
+   			return "дней";
+  	}
+    if( number == 3  )
+    {
+				return "дня";
+    }
+    if( number == 1  )
+    {
+				return "день";
+    }
+}
+
+var n = 14;
+alert( n + " " + getWord(n) );

@@ -1,0 +1,19 @@
+/*
+Exercise 2. Using language operators.
+1. Create an HTML document laba-1-2.html. 
+2. Use loops to form a 10 x 10 table.
+3. Print the result of multiplication i * j into the table cells.
+*/
+
+var result = "";
+
+for ( var i = 1; i < 11; i++ ) 
+{
+    for( var j = 1; j < 11; j++ ) 
+    {
+        result += (i * j) + ' '; 
+    }
+    result += '\n';
+}
+
+alert(result);

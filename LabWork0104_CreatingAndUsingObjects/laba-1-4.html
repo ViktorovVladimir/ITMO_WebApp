@@ -1,0 +1,30 @@
+/*
+Exercise 4: Creating and using objects.
+10. Create an HTML document laba-1-4.html.
+11. Define a class NewClass.
+12. Define the title, url properties and show() method.
+To display a string on the screen in the show() method, use the document.write() method.
+*/
+
+
+function Student(name, age)
+{
+	this.name = name;
+  this.age = age;
+}
+
+Student.prototype.print = function()
+  {
+  	//alert("Привет");
+    alert( this.name + " " + this.age );
+  };
+
+
+var obj3 = new Student("Petr", 22);
+
+obj3.name = "Vlad";
+obj3.age = 23;
+obj3.print();
+//alert( obj3.name + obj3["age"] );
+
+obj3 = null;
