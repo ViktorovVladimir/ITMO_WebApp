@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car control</title>
+    <style>
+        body 
+		{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input 
+		{
+            padding: 10px;
+            margin-top: 10px;
+            width: 300px;
+        }
+        button 
+		{
+            padding: 10px;
+            margin-top: 10px;
+        }
+        ul 
+		{
+            list-style-type: none;
+            padding: 0;
+        }
+        li 
+		{
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the website about cars by Vladimir V.</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="brands.html">Brands</a></li>
+                <li><a href="models.html">Models</a></li>
+                <li><a href="history.html">Brands history</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+                <li><a href="manage-cars.html">Manage Cars</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Car control</h1>
+    
+    <label for="make">Car brand:</label>
+    <input type="text" id="make" placeholder="Enter brand">
+
+    <label for="model">Car model:</label>
+    <input type="text" id="model" placeholder="Enter model">
+
+    <label for="year">Year of manufacture:</label>
+    <input type="number" id="year" placeholder="Enter year of manufacture">
+
+    <button id="addButton">Add a car</button>
+    <button id="clearButton">Clear list</button>
+
+    <h2>List of cars:</h2>
+    <ul id="carList"></ul>
+
+    <script>
+        
+		//--. Function to load a list of cars from localStorage
+		function loadCars() 
+		{
+			const cars = JSON.parse(localStorage.getItem('cars')) || [];
+			const carList = document.getElementById('carList');
+			//--. Clearing the list before loading
+			carList.innerHTML = '';
+
+			cars.forEach(function(car) {
+				const li = document.createElement('li');
+				li.textContent = car.make + ' ' + car.model + ' (' + car.year + ')';
+				carList.appendChild(li);
+			});
+		}
+        
+		//--. Функция для добавления автомобиля в localStorage
+        function addCar() 
+		{
+            const make 	= document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const year 	= document.getElementById('year').value;
+			
+			
+            if( make && model && year ) 
+			{
+                const cars = JSON.parse(localStorage.getItem('cars')) || [];
+                cars.push({ make, model, year });
+                localStorage.setItem('cars', JSON.stringify(cars));
+                //--. Updating the list
+				loadCars();
+                //--. Clearing input fields
+				clearInputs();
+            } 
+			else
+			{
+                alert("Пожалуйста, заполните все поля.");
+            }
+        }
+
+        //--. Function for clearing the list of cars from localStorage
+        function clearCars() 
+		{
+            localStorage.removeItem('cars');
+            //--. Updating the list
+			loadCars();
+        }
+
+        //--. Function for clearing input fields
+        function clearInputs() 
+		{
+            document.getElementById('make').value = '';
+            document.getElementById('model').value = '';
+            document.getElementById('year').value = '';
+        }
+
+        //--. Loading a list of cars on page load
+        window.onload = loadCars;
+
+        //--. Event handlers for buttons
+        document.getElementById('addButton').onclick = addCar;
+        document.getElementById('clearButton').onclick = clearCars;
+
+    </script>
+
+
+    <footer>
+        <p>&copy; 2025 ITMO. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
