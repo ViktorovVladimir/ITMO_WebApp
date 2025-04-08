@@ -40,6 +40,33 @@
                 <li>Porshe</li>				
             </ul>
         </section>
+		
+    <h2>Canvas API usage example</h2>
+    <canvas id="myCanvas" width="400" height="200"></canvas>
+	
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        //--. Drawing a rectangle
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(50, 50, 100, 100);
+
+        //--. Drawing a circle
+        ctx.beginPath();
+        ctx.arc(200, 100, 50, 0, Math.PI * 2);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        
+        //--. Drawing a line
+        ctx.beginPath();
+        ctx.moveTo(300, 50);
+        ctx.lineTo(350, 150);
+        ctx.strokeStyle = 'green';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+    </script>		
+		
     </main>
 
     <footer>
