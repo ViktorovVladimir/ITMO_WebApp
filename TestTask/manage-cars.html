@@ -69,13 +69,13 @@
 		//--. Function to load a list of cars from localStorage
 		function loadCars() 
 		{
-			const cars = JSON.parse(localStorage.getItem('cars')) || [];
-			const carList = document.getElementById('carList');
+			var cars = JSON.parse(localStorage.getItem('cars')) || [];
+			var carList = document.getElementById('carList');
 			//--. Clearing the list before loading
 			carList.innerHTML = '';
 
 			cars.forEach(function(car) {
-				const li = document.createElement('li');
+				var li = document.createElement('li');
 				li.textContent = car.make + ' ' + car.model + ' (' + car.year + ')';
 				carList.appendChild(li);
 			});
@@ -84,14 +84,14 @@
 		//--. Функция для добавления автомобиля в localStorage
         function addCar() 
 		{
-            const make 	= document.getElementById('make').value;
-            const model = document.getElementById('model').value;
-            const year 	= document.getElementById('year').value;
+            var make 	= document.getElementById('make').value;
+            var model = document.getElementById('model').value;
+            var year 	= document.getElementById('year').value;
 			
 			
             if( make && model && year ) 
 			{
-                const cars = JSON.parse(localStorage.getItem('cars')) || [];
+                var cars = JSON.parse(localStorage.getItem('cars')) || [];
                 cars.push({ make, model, year });
                 localStorage.setItem('cars', JSON.stringify(cars));
                 //--. Updating the list
